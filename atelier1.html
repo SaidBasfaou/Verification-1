@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>formulaire</title>
+  <style>
+    .d1{
+      background-color: royalblue;
+      width: 50%;
+      display: none;
+    }
+    body{
+      text-align: justify;
+    }
+    .H1{
+      text-align: center;
+    }
+  </style>
+  <script>
+    function afficherCacher()
+{
+  var input1=document.getElementById("oui");
+  var input2=document.getElementById("non");
+  var DivGlobal=document.getElementById("d1");
+  if(input1.checked==true) 
+{        
+  DivGlobal.style.display="block";
+  return ;
+}
+if(input2.checked==true) 
+  {        
+    DivGlobal.style.display="none";
+    return ;
+  }
+
+}
+function Verifier()
+{
+  var t1=document.getElementById("d1");      
+  var rg= new RegExp('[a-z]$','g');        
+  if(t1.value=="")      
+  {                 
+    alert("Attention !!");
+    return; 
+  }     
+  if(rg.test(t1.value)==false)
+  {
+    alert("attention cette champs obligatoir");                             return;                            
+  }
+}
+  </script>
+</head>
+<div class="divglobal">
+<body>
+  <H3 class=H1>FORMULAIRE</H3>
+  <form method="GET" id=f1>
+    <p><label for="nom">NOM</label>
+    <input type="text" name="nom" id="nom">(*)</p>
+    <p><label for="password">PASSWORD</label>
+    <input type="password" name="password" id="password" required="required"></p>
+    <p><label for="affichage">AFFICHER DIV</label>
+    <input type="radio" name="r1" id="oui" onchange="afficherCacher()";>OUI
+    <input type="radio" name="r1" id="non" onchange="afficherCacher()";>NON</p>
+    <p><div class="d1">
+      <label for="ville">CHOISIR UNE VILLE</label>
+      <select name="ville" id="ville">
+        <option value="0" disabled="disabled">selectionner</option>
+        <option value="1">beni mellal</option>
+        <option value="2">rabat</option>
+        <option value="3">tanger</option>
+        <option value="4">casablanca</option>
+      </select>
+    </div></p>
+    <input type="submit" value="se connecter" onclick="Verifier()">
+    <input type="reset" value="annuler">
+  </form></div>
+</body>
+</html>
